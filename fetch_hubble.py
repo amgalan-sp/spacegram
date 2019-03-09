@@ -1,12 +1,12 @@
 import requests
 
 
-def get_hubble(id, ext='jpeg'):
+def get_hubble(image_id, ext='jpeg'):
     status_ready = None
-    response = requests.get('http://hubblesite.org/api/v3/image/{}'.format(id))
+    response = requests.get('http://hubblesite.org/api/v3/image/{}'.format(image_id))
     data = response.json()['image_files']
     url = 'file_url'
-    image_name = "Hubble-{}.{}".format(id, ext)
+    image_name = "Hubble-{}.{}".format(image_id, ext)
     get_load = [download_file(image['file_url'], image_name) for image in data if image['file_url'].split('.')[-1] == ext]
 
 
