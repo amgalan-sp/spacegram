@@ -10,16 +10,18 @@ def make_dir_for_images(foldername='images'):
     filepath = os.path.join(os.getcwd(), foldername)
     return filepath
 
-def upload_photos(extension):
+def upload_photos(ext):
     username = os.getenv('username')
     password = os.getenv('password')
     bot = Bot()
     bot.login(username=username, password=password)
-    files = os.listdir()
-    filter_by_extension = lambda pics: pics.endswith('.{}'.format(extension))
-    picture_list = list(filter(filter_by_extension, files))
-    for pic in picture_list:
-        bot.upload_photo(pic, caption='Nice Pic')
+    picture_list = [pics for pics in os.listdir() if pics.endswith('.{}'.format(ext))]
+
+    #filter_by_extension(files):
+    #    return files.endswith('.{}'.format(extension))
+    #picture_list = list(filter(filter_by_extension(files), files))
+    for pics in picture_list:
+        bot.upload_photo(pics, caption='Nice Pic')
 
 
 if __name__ == "__main__":
