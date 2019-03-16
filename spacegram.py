@@ -3,6 +3,7 @@ from instabot import Bot
 from dotenv import load_dotenv
 from fetch_spacex import get_spacex
 from fetch_hubble import get_collection
+from fetch_hubble import download_file
 import argparse
 
 def make_dir_for_images(foldername='images'):
@@ -15,11 +16,7 @@ def upload_photos(ext):
     password = os.getenv('password')
     bot = Bot()
     bot.login(username=username, password=password)
-    picture_list = [pics for pics in os.listdir() if pics.endswith('.{}'.format(ext))]
-
-    #filter_by_extension(files):
-    #    return files.endswith('.{}'.format(extension))
-    #picture_list = list(filter(filter_by_extension(files), files))
+    picture_list = [pics for pics in os.listdir() if pics.endswith(ext)]
     for pics in picture_list:
         bot.upload_photo(pics, caption='Nice Pic')
 
