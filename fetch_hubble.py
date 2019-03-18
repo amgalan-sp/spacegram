@@ -5,7 +5,6 @@ def get_hubble(image_id, ext='jpeg'):
     status_ready = None
     response = requests.get('http://hubblesite.org/api/v3/image/{}'.format(image_id))
     data = response.json()['image_files']
-    url = 'file_url'
     image_name = "Hubble-{}.{}".format(image_id, ext)
     loading_list = [image['file_url'] for image in data if image['file_url'].endswith(ext)]
     for picture_url in loading_list:
