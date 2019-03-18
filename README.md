@@ -11,15 +11,37 @@ password=your_password_in_instagram
 ```
 и сохранить его в корневой папке.
 
-Далее, вам необходимо при выполнении скрипта spacegram.py передать в терминале в качестве параметра выполнения программы их наименования: `spacex` или `hubble`, а также, в случае использования параметра `hubble` необходимо передать:
-1. формат файла (расширение изображения), в котором вы хотели осуществить загрузку из серверов hubble, и выгрузить в Instagram;
-2. ввести название коллекции фотографий `hubble` - `news`, `holiday_cards`, `wallpaper`, `spacecraft`, `printshop`, или `stsci_gallery` и т.д.
+Доступные коллекции hubble:
+* `news`
+* `holiday_cards`
+* `wallpaper`
+* `spacecraft`
+* `printshop`
+* `stsci_gallery`.
+
+Доступные расширения для скачивания с hubble:
+* png
+* jpg
+* tiff
+* tif
+
+Для spacex единственным расширением по умолчанию является `jpeg`
 
 #### Пример запуска
 
+* Использование hubble, расширения png и коллекции stsci_gallery:
 ```#
-/instagram$ Python3 spacegram.py spacex --extension png --collection stsci_gallery
+/spacegram$ Python3 spacegram.py hubble --extension png --collection stsci_gallery
 ```
+* Использование hubble, расширения png и коллекции stsci_gallery:
+```#
+/spacegram$ Python3 spacegram.py hubble -e jpg -c printshop
+```
+* Использование spacex, скачивание фотографий с последнего запуска, (расширение по умолчанию jpeg):
+```#
+/spacegram$ Python3 spacegram.py spacex
+```
+
 ### Цель проекта
 
 Если данные введены правильно, при выполнении файла spacegram.py высветится: `INFO - Instabot Started`, `INFO - Logged-in successfully `
