@@ -14,9 +14,3 @@ def get_collection(collection_name, ext='jpeg'):
     response = requests.get('http://hubblesite.org/api/v3/images/{}'.format(collection_name))
     for image_id in response.json():
         get_hubble(image_id['id'], ext)
-
-
-def download_file(url, filename):
-    response = requests.get(url)
-    with open(filename, 'wb') as file:
-        file.write(response.content)
